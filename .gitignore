@@ -1,0 +1,21 @@
+# Java compiled output
+*.class
+out/
+build/
+
+# Local application data and logs
+wordgame-data.ser
+*.log
+server.log
+
+# Environment variables / local secrets
+.env
+.env.*
+!.env.example
+
+# IDE and OS files
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
