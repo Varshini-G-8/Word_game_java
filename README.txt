@@ -1,37 +1,99 @@
-WORD GUESS GAME — SIMPLE JAVA WEB APPLICATION
+# Word Guess Game
 
-This version uses Java's built-in HTTP server. No Maven, Spring Boot, Tomcat,
-database installation, or third-party libraries are required.
+A browser-based word guessing game developed using **Java**. The application supports two types of users: players, who can register and play the game, and administrators, who can view game activity reports.
 
-REQUIREMENTS
-- JDK 11 or newer.
+---
 
-RUN ON WINDOWS
-1. Extract the ZIP to a folder.
-2. Open PowerShell in the WordGuessJavaSimple folder.
-3. Check Java: java -version and javac -version
-4. Compile: javac -encoding UTF-8 Main.java
-5. Start: java Main
-6. Open http://localhost:8080 in your browser.
+## Overview
 
-FIRST-RUN ADMIN SETUP
-- Open http://localhost:8080/admin/setup to create your own administrator account.
-- Setup is available only until an administrator account exists.
-- No default administrator username or password is printed or preconfigured.
+The Word Guess Game allows registered players to guess a randomly selected five-letter word within a maximum of five attempts.
 
-FEATURES
-- Browser-based UI using the original project's stylesheet and responsive layout
-- Player registration and login
-- Username validation (at least five letters)
-- Password validation (at least five characters, a letter, a digit, and one of $ % *)
-- Word guessing: five-letter words, five guesses, green/orange/grey feedback
-- Three rounds per player per calendar day
-- Admin dashboard, daily report, and per-player report
-- Persistent storage in wordgame-data.ser, created automatically when the application runs
-- Passwords are stored as PBKDF2 hashes
+The application supports two user roles:
 
-NOTES
-- All project data is stored locally in wordgame-data.ser. Keep this file to retain users and reports.
-- Keep Main.java, static/style.css, and wordgame-data.ser in the same working folder.
-- Stop the server with Ctrl+C.
-- Intended for local coursework/demo use, not public internet deployment.
+* **Player** – registers, logs in, and plays the word guessing game.
+* **Administrator** – accesses the administration dashboard and views game activity reports.
+
+The application uses Java's built-in HTTP server for handling requests, HTML for page rendering, CSS for styling, JavaScript for interactive gameplay, and local file storage for persisting application data.
+
+---
+
+## Features
+
+### Authentication and User Management
+
+* Player registration and login
+* Password hashing
+* Session-based authentication
+* Role-based access control
+* Logout functionality
+* Username and password validation
+* Prevention of duplicate usernames
+* Administrator account setup
+
+### Word Guessing Game
+
+* Five-letter word guessing
+* Maximum of 5 guesses per word
+* Maximum of 3 words per player per day
+* Random word selection
+* Guess submission and validation
+* Previous guesses displayed on the game board
+* Wordle-style color feedback
+* Win and loss handling
+* Option to continue with another word when eligible
+
+### Guess Feedback
+
+Each letter in a submitted guess receives a color based on its relationship to the target word:
+
+| Indicator | Meaning                                  |
+| --------- | ---------------------------------------- |
+| 🟩 Green  | Correct letter in the correct position   |
+| 🟧 Orange | Correct letter in the wrong position     |
+| ⬜ Grey    | Letter is not present in the target word |
+
+The game checks exact letter matches first and then checks the remaining letters to handle repeated letters correctly.
+
+### Administrator Features
+
+Administrators can:
+
+* Access the administration dashboard
+* View daily game activity
+* View player activity
+* View the number of words attempted
+* View successful rounds
+* View player-specific activity
+
+---
+
+## Technology Stack
+
+| Layer             | Technology                   |
+| ----------------- | ---------------------------- |
+| Backend           | Java                         |
+| HTTP Server       | Java Built-in HTTP Server    |
+| Frontend          | HTML5, CSS3, JavaScript      |
+| Styling           | CSS                          |
+| Data Storage      | Local file-based persistence |
+| Authentication    | Session-based authentication |
+| Password Security | Password hashing             |
+| Version Control   | Git and GitHub               |
+
+---
+
+## Project Structure
+
+```text
+WordGuessJavaSimple/
+│
+├── Main.java
+├── README.txt
+├── .gitignore
+│
+├── static/
+│   └── style.css
+│
+└── wordgame-data.ser  (created when the application runs)
+```
+
